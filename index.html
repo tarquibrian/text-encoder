@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Endocer/Decoder</title>
+    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./styles/ui.css" />
+  </head>
+  <body>
+    <header><h1>ALURA TEXT ENCODER</h1></header>
+    <main>
+      <section>
+        <textarea
+          class="container"
+          placeholder="Ingrese su texto..."
+        ></textarea>
+        <div class="options">
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider"></span>
+          </label>
+          <button onclick="encriptar()">Encriptar</button>
+        </div>
+      </section>
+      <aside>
+        <div id="listContent" class="list">
+          <div class="row">
+            <span class="row-item"
+              >items1 items1 items1 items1 items1 items1items1 items1 items1
+              items1 items1 items1 items1items1 items1 items1 items1 items1
+              items1 items1items1</span
+            >
+            <div class="list-options">
+              <button>
+                <img class="eye-img" src="public/eye.png" alt="copy img" />
+              </button>
+              <button><img src="public/copy.png" alt="copy img" /></button>
+              <button class="delete-img">
+                <img src="public/delete.png" alt="copy img" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
