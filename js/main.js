@@ -12,24 +12,24 @@ const encriptar = () => {
         : desencriptarTexto(InputText.value);
 
     newRow.innerHTML = `
-  <div class="row">
+ 
     <span class="row-item"
-      >${textEncoded}</span
-    >
+      >${textEncoded}</span>
     <div class="list-options">
       <button>
         <img class="eye-img" src="public/eye.png" alt="copy img" />
       </button>
       <button><img src="public/copy.png" alt="copy img" /></button>
-      <button class="delete-img">
+      <button class="delete-img" onclick="deleteItem()">
         <img src="public/delete.png" alt="copy img" />
       </button>
     </div>
-  </div>
+  
   `;
-
+    newRow.classList.add("row");
     InputText.value = "";
     list.appendChild(newRow);
+    console.log(newRow);
   }
 };
 
@@ -82,3 +82,5 @@ const changeValue = () => {
   btnEncode.textContent =
     checkbox.value === "on" ? "Encriptar" : "Desencriptar";
 };
+
+const deleteItem = () => {};
