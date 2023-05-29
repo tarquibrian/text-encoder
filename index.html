@@ -12,15 +12,16 @@
     <main>
       <section>
         <textarea
+          id="input-text"
           class="container"
           placeholder="Ingrese su texto..."
         ></textarea>
         <div class="options">
           <label class="switch">
-            <input type="checkbox" />
+            <input id="checkbox" type="checkbox" value='on' onclick="changeValue()" />
             <span class="slider"></span>
           </label>
-          <button onclick="encriptar()">Encriptar</button>
+          <button onclick="encriptar()" id="btnEncode">Encriptar</button>
         </div>
       </section>
       <aside>

@@ -36,10 +36,11 @@ main section button {
   background: #474747;
   border-radius: 6px;
   padding: 0.6rem 1rem;
-  display: flex;
+  /* display: flex; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   font-family: var(--ff-chivo);
+  width: 140px;
 }
 
 main aside {
@@ -51,7 +52,6 @@ main aside {
 }
 
 .container {
-  /* width: 400px; */
   min-height: 150px;
   padding: 20px;
   background: rgba(0, 0, 0, 0.1);
@@ -62,7 +62,6 @@ main aside {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* The switch - the box around the slider */
 .switch {
   font-size: 17px;
   position: relative;
@@ -71,14 +70,12 @@ main aside {
   height: 2em;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -87,6 +84,7 @@ main aside {
   background-color: #474747;
   border-radius: 50px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .slider:before {
