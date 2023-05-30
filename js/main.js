@@ -114,7 +114,7 @@ const deleteItem = (row) => {
 };
 
 const copyItem = (row) => {
-  const t = row.parentElement.parentElement.parentElement.firstElementChild;
-  inputPopupMesage("Texto Copiado", "#ffbe0b");
-  navigator.clipboard.writeText(t.textContent);
+  const text = row.parentElement.parentElement.parentElement.firstElementChild;
+  inputPopupMesage("Texto Copiado", "#ee6c4d");
+  navigator.clipboard.writeText(text.textContent);
 };
