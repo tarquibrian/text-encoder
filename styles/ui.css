@@ -130,6 +130,10 @@ main aside img {
   transform: translateX(1.5em);
 }
 
+.switcher input {
+  display: none;
+}
+
 /* ASIDE */
 aside {
   /* color: white; */
@@ -169,6 +173,18 @@ aside .list .row .row-item {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  position: relative;
+}
+
+.hidden {
+  position: absolute;
+  background-color: rgba(71, 71, 71, 0.4);
+  inset: 0;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  display: none;
+  /* z-index: -1; */
 }
 
 /* aside .list .row .row-item::-webkit-scrollbar {

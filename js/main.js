@@ -2,6 +2,7 @@ const listEmtpy = document.getElementById("listContent");
 const imgEmpty = document.getElementById("imgEmpty");
 const popupMesaje = document.getElementById("popupMesaje");
 const InputText = document.getElementById("input-text");
+let toggleHidden = false;
 
 const encode = () => {
   const list = document.getElementById("listContent");
@@ -23,11 +24,17 @@ const encode = () => {
 
       newRow.innerHTML = `
         <span class="row-item"
-          >${textEncoded}</span>
+          >${textEncoded}<span class="hidden"></span> </span>
         <div class="list-options">
-          <button">
+          <label class="switcher">
+            <input
+              id="checkbox"
+              type="checkbox"
+              value="off"
+              onclick="hiddenItem(this)"
+            />
             <img class="eye-img" src="public/eye.png" alt="copy img" />
-          </button>
+          </label>
           <button onclick="copyItem(this)">
             <img src="public/copy.png" alt="copy img" />
           </button>
@@ -114,7 +121,7 @@ const changeValue = () => {
 };
 
 const deleteItem = (row) => {
-  row.parentElement.parentElement.parentElement.remove();
+  row.parentElement.parentElement.remove();
   inputPopupMesage("Texto Eliminado");
   if (listEmtpy.textContent === "") {
     imgEmpty.style.display = "flex";
@@ -122,7 +129,22 @@ const deleteItem = (row) => {
 };
 
 const copyItem = (row) => {
-  const text = row.parentElement.parentElement.parentElement.firstElementChild;
+  const text = row.parentElement.parentElement.firstElementChild;
   inputPopupMesage("Texto Copiado", "#ee6c4d");
   navigator.clipboard.writeText(text.textContent);
+};
+
+const hiddenItem = (row) => {
+  let initial =
+    row.parentElement.parentElement.parentElement.firstElementChild
+      .firstElementChild;
+  if (row.value === "off") {
+    initial.style.opacity = "1";
+    initial.style.display = "block";
+    row.value = "on";
+  } else {
+    initial.style.opacity = "0";
+    initial.style.display = "none";
+    row.value = "off";
+  }
 };
