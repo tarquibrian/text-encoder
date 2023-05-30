@@ -1,10 +1,10 @@
 const listEmtpy = document.getElementById("listContent");
 const imgEmpty = document.getElementById("imgEmpty");
 const popupMesaje = document.getElementById("popupMesaje");
-
+const InputText = document.getElementById("input-text");
 const encode = () => {
   const list = document.getElementById("listContent");
-  const InputText = document.getElementById("input-text");
+
   const checkbox = document.getElementById("checkbox");
 
   if (InputText.value === "") {
@@ -12,34 +12,42 @@ const encode = () => {
   }
 
   if (InputText.value !== "") {
-    const newRow = document.createElement("div");
+    if (textValidator()) {
+      inputPopupMesage("No se permiten acentos/mayúsculas");
+    } else {
+      const newRow = document.createElement("div");
+      const textEncoded =
+        checkbox.value === "on"
+          ? encodeText(InputText.value)
+          : decodeText(InputText.value);
 
-    const textEncoded =
-      checkbox.value === "on"
-        ? encodeText(InputText.value)
-        : decodeText(InputText.value);
+      newRow.innerHTML = `
+        <span class="row-item"
+          >${textEncoded}</span>
+        <div class="list-options">
+          <button">
+            <img class="eye-img" src="public/eye.png" alt="copy img" />
+          </button>
+          <button onclick="copyItem(this)">
+            <img src="public/copy.png" alt="copy img" />
+          </button>
+          <button class="delete-img" onclick="deleteItem(this)">
+            <img src="public/delete.png" alt="copy img" />
+          </button>
+        </div>
+        `;
+      newRow.classList.add("row");
+      InputText.value = "";
+      list.appendChild(newRow);
+      imgEmpty.style.display = "none";
+    }
+  }
+};
 
-    newRow.innerHTML = `
- 
-    <span class="row-item"
-      >${textEncoded}</span>
-    <div class="list-options">
-      <button">
-        <img class="eye-img" src="public/eye.png" alt="copy img" />
-      </button>
-      <button onclick="copyItem(this)">
-        <img src="public/copy.png" alt="copy img" />
-      </button>
-      <button class="delete-img" onclick="deleteItem(this)">
-        <img src="public/delete.png" alt="copy img" />
-      </button>
-    </div>
-  
-  `;
-    newRow.classList.add("row");
-    InputText.value = "";
-    list.appendChild(newRow);
-    imgEmpty.style.display = "none";
+const textValidator = () => {
+  let validador = InputText.value.match(/^[a-z]*$/);
+  if (!validador || validador === 0) {
+    return true;
   }
 };
 
@@ -51,7 +59,7 @@ const inputPopupMesage = (value, bg = "#e63946") => {
   setTimeout(() => {
     popupMesaje.style.display = "none";
     popupMesaje.style.opacity = "0";
-  }, 4000);
+  }, 5000);
   PopupMesage.innerText = value;
 };
 
