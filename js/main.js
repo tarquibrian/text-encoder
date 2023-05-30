@@ -31,25 +31,25 @@ const encoder = () => {
       : decodeText(InputText.value);
 
   newRow.innerHTML = `
-        <span class="row-item"
-          >${textEncoded}<span class="hidden"></span></span>
-        <div class="list-options">
-          <label class="switcher">
-            <input
-              id="checkbox"
-              type="checkbox"
-              value="on"
-              onclick="hiddenItem(this)"
-            />
-            <img class="eye-img" src="public/eye.png" alt="copy img" />
-          </label>
-          <button onclick="copyItem(this)">
-            <img src="public/copy.png" alt="copy img" />
-          </button>
-          <button class="delete-img" onclick="deleteItem(this)">
-            <img src="public/delete.png" alt="copy img" />
-          </button>
-        </div>
+    <span class="row-item"
+      >${textEncoded}<span class="hidden"></span></span>
+    <div class="list-options">
+      <label class="switcher">
+        <input
+          id="checkbox"
+          type="checkbox"
+          value="on"
+          onclick="hiddenItem(this)"
+        />
+        <img class="eye-img" src="public/eye.png" alt="copy img" />
+      </label>
+      <button onclick="copyItem(this)">
+        <img src="public/copy.png" alt="copy img" />
+      </button>
+      <button class="delete-img" onclick="deleteItem(this)">
+        <img src="public/delete.png" alt="copy img" />
+      </button>
+    </div>
         `;
   newRow.classList.add("row");
   InputText.value = "";
@@ -76,21 +76,29 @@ const inputPopupMesage = (value, bg = "#e63946") => {
 
 const encodeText = (encodeValue) => {
   encodeValue = encodeValue.toLowerCase();
-
-  for (let i = 0; i < pairs.length; i++) {
-    if (encodeValue.includes(pairs[i][0])) {
-      encodeValue = encodeValue.replaceAll(pairs[i][0], pairs[i][1]);
+  for (const [pair1, pair2] of pairs) {
+    if (encodeValue.includes(pair1)) {
+      encodeValue = encodeValue.replaceAll(pair1, pair2);
     }
   }
+  // for (let i = 0; i < pairs.length; i++) {
+  //   if (encodeValue.includes(pairs[i][0])) {
+  //     encodeValue = encodeValue.replaceAll(pairs[i][0], pairs[i][1]);
+  //   }
+  // }
   return encodeValue;
 };
 
 const decodeText = (decodeValue) => {
   decodeValue = decodeValue.toLowerCase();
-
-  for (let i = 0; i < pairs.length; i++) {
-    if (decodeValue.includes(pairs[i][1])) {
-      decodeValue = decodeValue.replaceAll(pairs[i][1], pairs[i][0]);
+  // for (let i = 0; i < pairs.length; i++) {
+  //   if (decodeValue.includes(pairs[i][1])) {
+  //     decodeValue = decodeValue.replaceAll(pairs[i][1], pairs[i][0]);
+  //   }
+  // }
+  for (const [pair1, pair2] of pairs) {
+    if (decodeValue.includes(pair2)) {
+      decodeValue = decodeValue.replaceAll(pair2, pair1);
     }
   }
   return decodeValue;
