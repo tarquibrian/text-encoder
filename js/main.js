@@ -81,21 +81,11 @@ const encodeText = (encodeValue) => {
       encodeValue = encodeValue.replaceAll(pair1, pair2);
     }
   }
-  // for (let i = 0; i < pairs.length; i++) {
-  //   if (encodeValue.includes(pairs[i][0])) {
-  //     encodeValue = encodeValue.replaceAll(pairs[i][0], pairs[i][1]);
-  //   }
-  // }
   return encodeValue;
 };
 
 const decodeText = (decodeValue) => {
   decodeValue = decodeValue.toLowerCase();
-  // for (let i = 0; i < pairs.length; i++) {
-  //   if (decodeValue.includes(pairs[i][1])) {
-  //     decodeValue = decodeValue.replaceAll(pairs[i][1], pairs[i][0]);
-  //   }
-  // }
   for (const [pair1, pair2] of pairs) {
     if (decodeValue.includes(pair2)) {
       decodeValue = decodeValue.replaceAll(pair2, pair1);
