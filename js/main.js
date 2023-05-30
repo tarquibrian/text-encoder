@@ -1,26 +1,36 @@
-const encriptar = () => {
+const listEmtpy = document.getElementById("listContent");
+const imgEmpty = document.getElementById("imgEmpty");
+const popupMesaje = document.getElementById("popupMesaje");
+
+const encode = () => {
   const list = document.getElementById("listContent");
   const InputText = document.getElementById("input-text");
   const checkbox = document.getElementById("checkbox");
+
+  if (InputText.value === "") {
+    inputPopupMesage("Sin texto");
+  }
 
   if (InputText.value !== "") {
     const newRow = document.createElement("div");
 
     const textEncoded =
       checkbox.value === "on"
-        ? encriptarTexto(InputText.value)
-        : desencriptarTexto(InputText.value);
+        ? encodeText(InputText.value)
+        : decodeText(InputText.value);
 
     newRow.innerHTML = `
  
     <span class="row-item"
       >${textEncoded}</span>
     <div class="list-options">
-      <button>
+      <button">
         <img class="eye-img" src="public/eye.png" alt="copy img" />
       </button>
-      <button><img src="public/copy.png" alt="copy img" /></button>
-      <button class="delete-img" onclick="deleteItem()">
+      <button onclick="copyItem(this)">
+        <img src="public/copy.png" alt="copy img" />
+      </button>
+      <button class="delete-img" onclick="deleteItem(this)">
         <img src="public/delete.png" alt="copy img" />
       </button>
     </div>
@@ -29,11 +39,23 @@ const encriptar = () => {
     newRow.classList.add("row");
     InputText.value = "";
     list.appendChild(newRow);
-    console.log(newRow);
+    imgEmpty.style.display = "none";
   }
 };
 
-const encriptarTexto = (stringEncriptada) => {
+const inputPopupMesage = (value, bg = "#e63946") => {
+  const PopupMesage = document.getElementById("popupMesageText");
+  popupMesaje.style.display = "flex";
+  popupMesaje.style.opacity = "1";
+  PopupMesage.style.backgroundColor = bg;
+  setTimeout(() => {
+    popupMesaje.style.display = "none";
+    popupMesaje.style.opacity = "0";
+  }, 4000);
+  PopupMesage.innerText = value;
+};
+
+const encodeText = (stringEncriptada) => {
   let matrizCodigo = [
     ["e", "enter"],
     ["i", "imes"],
@@ -54,7 +76,7 @@ const encriptarTexto = (stringEncriptada) => {
   return stringEncriptada;
 };
 
-const desencriptarTexto = (stringDesencriptada) => {
+const decodeText = (stringDesencriptada) => {
   let matrizCodigo = [
     ["e", "enter"],
     ["i", "imes"],
@@ -83,4 +105,16 @@ const changeValue = () => {
     checkbox.value === "on" ? "Encriptar" : "Desencriptar";
 };
 
-const deleteItem = () => {};
+const deleteItem = (row) => {
+  row.parentElement.parentElement.parentElement.remove();
+  inputPopupMesage("Texto Eliminado");
+  if (listEmtpy.textContent === "") {
+    imgEmpty.style.display = "flex";
+  }
+};
+
+const copyItem = (row) => {
+  const t = row.parentElement.parentElement.parentElement.firstElementChild;
+  inputPopupMesage("Texto Copiado", "#ffbe0b");
+  navigator.clipboard.writeText(t.textContent);
+};

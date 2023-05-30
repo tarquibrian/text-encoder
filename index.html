@@ -17,33 +17,28 @@
           placeholder="Ingrese su texto..."
         ></textarea>
         <div class="options">
+          <span>Modo</span>
           <label class="switch">
-            <input id="checkbox" type="checkbox" value='on' onclick="changeValue()" />
+            <input
+              id="checkbox"
+              type="checkbox"
+              value="on"
+              onclick="changeValue()"
+            />
             <span class="slider"></span>
           </label>
-          <button onclick="encriptar()" id="btnEncode">Encriptar</button>
+          <button onclick="encode()" id="btnEncode">Encriptar</button>
         </div>
       </section>
       <aside>
-        <div id="listContent" class="list">
-          <!-- <div class="row">
-            <span class="row-item"
-              >items1 items1 items1 items1 items1 items1items1 items1 items1
-              items1 items1 items1 items1items1 items1 items1 items1 items1
-              items1 items1items1</span
-            >
-            <div class="list-options">
-              <button>
-                <img class="eye-img" src="public/eye.png" alt="copy img" />
-              </button>
-              <button><img src="public/copy.png" alt="copy img" /></button>
-              <button class="delete-img">
-                <img src="public/delete.png" alt="copy img" />
-              </button>
-            </div>
-          </div> -->
+        <div id="listContent" class="list"></div>
+        <div id="imgEmpty" class="imgEmpty">
+          <img src="public/empty4.png" alt="empty list" />
+          <span>Lista Vacia</span>
         </div>
       </aside>
+
+      <div id="popupMesaje"><span id="popupMesageText">asdf</span></div>
     </main>
     <script src="./js/main.js"></script>
   </body>
