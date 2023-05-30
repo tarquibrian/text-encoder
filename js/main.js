@@ -18,17 +18,16 @@ const encoder = () => {
     inputPopupMesage("Sin texto");
   }
 
-  if (InputText.value !== "") {
-    if (textValidator()) {
-      inputPopupMesage("No se permiten acentos/mayúsculas");
-    } else {
-      const newRow = document.createElement("div");
-      const textEncoded =
-        checkbox.value === "on"
-          ? encodeText(InputText.value)
-          : decodeText(InputText.value);
+  if (textValidator()) {
+    inputPopupMesage("No se permiten acentos/mayúsculas");
+  } else {
+    const newRow = document.createElement("div");
+    const textEncoded =
+      checkbox.value === "on"
+        ? encodeText(InputText.value)
+        : decodeText(InputText.value);
 
-      newRow.innerHTML = `
+    newRow.innerHTML = `
         <span class="row-item"
           >${textEncoded}<span class="hidden"></span></span>
         <div class="list-options">
@@ -49,11 +48,10 @@ const encoder = () => {
           </button>
         </div>
         `;
-      newRow.classList.add("row");
-      InputText.value = "";
-      list.appendChild(newRow);
-      imgEmpty.style.display = "none";
-    }
+    newRow.classList.add("row");
+    InputText.value = "";
+    list.appendChild(newRow);
+    imgEmpty.style.display = "none";
   }
 };
 
@@ -74,29 +72,26 @@ const inputPopupMesage = (value, bg = "#e63946") => {
   PopupMesage.innerText = value;
 };
 
-const encodeText = (stringEncriptada) => {
-  stringEncriptada = stringEncriptada.toLowerCase();
+const encodeText = (encodeValue) => {
+  encodeValue = encodeValue.toLowerCase();
 
   for (let i = 0; i < pairs.length; i++) {
-    if (stringEncriptada.includes(pairs[i][0])) {
-      stringEncriptada = stringEncriptada.replaceAll(pairs[i][0], pairs[i][1]);
+    if (encodeValue.includes(pairs[i][0])) {
+      encodeValue = encodeValue.replaceAll(pairs[i][0], pairs[i][1]);
     }
   }
-  return stringEncriptada;
+  return encodeValue;
 };
 
-const decodeText = (stringDesencriptada) => {
-  stringDesencriptada = stringDesencriptada.toLowerCase();
+const decodeText = (decodeValue) => {
+  decodeValue = decodeValue.toLowerCase();
 
   for (let i = 0; i < pairs.length; i++) {
-    if (stringDesencriptada.includes(pairs[i][1])) {
-      stringDesencriptada = stringDesencriptada.replaceAll(
-        pairs[i][1],
-        pairs[i][0]
-      );
+    if (decodeValue.includes(pairs[i][1])) {
+      decodeValue = decodeValue.replaceAll(pairs[i][1], pairs[i][0]);
     }
   }
-  return stringDesencriptada;
+  return decodeValue;
 };
 
 const changeValue = () => {
