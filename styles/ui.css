@@ -201,6 +201,11 @@ aside .list .row .row-item {
 
 .list-options .eye-img {
   margin-right: 0.2rem;
+  cursor: pointer;
+}
+
+.eye-img:hover {
+  transform: scale(1.02);
 }
 
 .list-options .delete-img {

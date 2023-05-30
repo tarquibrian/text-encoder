@@ -24,7 +24,7 @@ const encode = () => {
 
       newRow.innerHTML = `
         <span class="row-item"
-          >${textEncoded}<span class="hidden"></span> </span>
+          >${textEncoded}<span class="hidden"></span></span>
         <div class="list-options">
           <label class="switcher">
             <input
@@ -52,10 +52,8 @@ const encode = () => {
 };
 
 const textValidator = () => {
-  let validador = InputText.value.match(/^[a-z]*$/);
-  if (!validador || validador === 0) {
-    return true;
-  }
+  const isValidate = /[^a-z 0-9]/g.test(InputText.value);
+  return isValidate;
 };
 
 const inputPopupMesage = (value, bg = "#e63946") => {
@@ -71,7 +69,7 @@ const inputPopupMesage = (value, bg = "#e63946") => {
 };
 
 const encodeText = (stringEncriptada) => {
-  let matrizCodigo = [
+  let pairs = [
     ["e", "enter"],
     ["i", "imes"],
     ["a", "ai"],
@@ -80,19 +78,16 @@ const encodeText = (stringEncriptada) => {
   ];
   stringEncriptada = stringEncriptada.toLowerCase();
 
-  for (let i = 0; i < matrizCodigo.length; i++) {
-    if (stringEncriptada.includes(matrizCodigo[i][0])) {
-      stringEncriptada = stringEncriptada.replaceAll(
-        matrizCodigo[i][0],
-        matrizCodigo[i][1]
-      );
+  for (let i = 0; i < pairs.length; i++) {
+    if (stringEncriptada.includes(pairs[i][0])) {
+      stringEncriptada = stringEncriptada.replaceAll(pairs[i][0], pairs[i][1]);
     }
   }
   return stringEncriptada;
 };
 
 const decodeText = (stringDesencriptada) => {
-  let matrizCodigo = [
+  let pairs = [
     ["e", "enter"],
     ["i", "imes"],
     ["a", "ai"],
@@ -101,11 +96,11 @@ const decodeText = (stringDesencriptada) => {
   ];
   stringDesencriptada = stringDesencriptada.toLowerCase();
 
-  for (let i = 0; i < matrizCodigo.length; i++) {
-    if (stringDesencriptada.includes(matrizCodigo[i][1])) {
+  for (let i = 0; i < pairs.length; i++) {
+    if (stringDesencriptada.includes(pairs[i][1])) {
       stringDesencriptada = stringDesencriptada.replaceAll(
-        matrizCodigo[i][1],
-        matrizCodigo[i][0]
+        pairs[i][1],
+        pairs[i][0]
       );
     }
   }
