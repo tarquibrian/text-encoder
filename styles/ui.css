@@ -1,6 +1,25 @@
 header {
-  height: 50px;
-  background-color: aliceblue;
+  height: 80px;
+  color: white;
+  background-color: #474747;
+  /* max-width: 1380px; */
+  /* margin-inline: auto; */
+}
+
+header .headerContent {
+  max-width: 1380px;
+  margin-inline: auto;
+  /* background-color: #e63946; */
+  padding: .6rem 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+header .headerContent img {
+  height: 100%;
+  width: auto;
 }
 
 main {
