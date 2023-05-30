@@ -2,9 +2,9 @@ const listEmtpy = document.getElementById("listContent");
 const imgEmpty = document.getElementById("imgEmpty");
 const popupMesaje = document.getElementById("popupMesaje");
 const InputText = document.getElementById("input-text");
+
 const encode = () => {
   const list = document.getElementById("listContent");
-
   const checkbox = document.getElementById("checkbox");
 
   if (InputText.value === "") {
