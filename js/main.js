@@ -16,18 +16,21 @@ const encoder = () => {
 
   if (InputText.value === "") {
     inputPopupMesage("Sin texto");
+    return;
   }
 
   if (textValidator()) {
     inputPopupMesage("No se permiten acentos/mayúsculas");
-  } else {
-    const newRow = document.createElement("div");
-    const textEncoded =
-      checkbox.value === "on"
-        ? encodeText(InputText.value)
-        : decodeText(InputText.value);
+    return;
+  }
 
-    newRow.innerHTML = `
+  const newRow = document.createElement("div");
+  const textEncoded =
+    checkbox.value === "on"
+      ? encodeText(InputText.value)
+      : decodeText(InputText.value);
+
+  newRow.innerHTML = `
         <span class="row-item"
           >${textEncoded}<span class="hidden"></span></span>
         <div class="list-options">
@@ -35,7 +38,7 @@ const encoder = () => {
             <input
               id="checkbox"
               type="checkbox"
-              value="off"
+              value="on"
               onclick="hiddenItem(this)"
             />
             <img class="eye-img" src="public/eye.png" alt="copy img" />
@@ -48,11 +51,10 @@ const encoder = () => {
           </button>
         </div>
         `;
-    newRow.classList.add("row");
-    InputText.value = "";
-    list.appendChild(newRow);
-    imgEmpty.style.display = "none";
-  }
+  newRow.classList.add("row");
+  InputText.value = "";
+  list.appendChild(newRow);
+  imgEmpty.style.display = "none";
 };
 
 const textValidator = () => {
