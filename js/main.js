@@ -2,9 +2,15 @@ const listEmtpy = document.getElementById("listContent");
 const imgEmpty = document.getElementById("imgEmpty");
 const popupMesaje = document.getElementById("popupMesaje");
 const InputText = document.getElementById("input-text");
-let toggleHidden = false;
+const pairs = [
+  ["e", "enter"],
+  ["i", "imes"],
+  ["a", "ai"],
+  ["o", "ober"],
+  ["u", "ufat"],
+];
 
-const encode = () => {
+const encoder = () => {
   const list = document.getElementById("listContent");
   const checkbox = document.getElementById("checkbox");
 
@@ -69,13 +75,6 @@ const inputPopupMesage = (value, bg = "#e63946") => {
 };
 
 const encodeText = (stringEncriptada) => {
-  let pairs = [
-    ["e", "enter"],
-    ["i", "imes"],
-    ["a", "ai"],
-    ["o", "ober"],
-    ["u", "ufat"],
-  ];
   stringEncriptada = stringEncriptada.toLowerCase();
 
   for (let i = 0; i < pairs.length; i++) {
@@ -87,13 +86,6 @@ const encodeText = (stringEncriptada) => {
 };
 
 const decodeText = (stringDesencriptada) => {
-  let pairs = [
-    ["e", "enter"],
-    ["i", "imes"],
-    ["a", "ai"],
-    ["o", "ober"],
-    ["u", "ufat"],
-  ];
   stringDesencriptada = stringDesencriptada.toLowerCase();
 
   for (let i = 0; i < pairs.length; i++) {
