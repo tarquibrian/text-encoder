@@ -45,7 +45,6 @@ body {
 }
 
 main {
-  /* position: relative; */
   margin: 0 auto;
   width: 100%;
   max-width: 1380px;
@@ -65,4 +64,8 @@ button {
 
 button:hover {
   transform: scale(1.02);
+}
+
+a {
+  color: black;
 }

@@ -273,6 +273,19 @@ footer div {
   width: 90%;
   max-width: 1380px;
   margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+footer div h2 {
+  font-size: var(--fz-md);
+  text-align: center;
+}
+
+footer div span {
+  font-size: var(--fz-sm);
 }
 
 @media screen and (max-width: 1024px) {
