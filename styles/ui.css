@@ -7,14 +7,16 @@ header {
 }
 
 header .headerContent {
+  width: 90%;
   max-width: 1380px;
   margin-inline: auto;
   /* background-color: #e63946; */
-  padding: .6rem 0;
+  padding: 0.6rem 0;
   height: 100%;
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  font-size: var(--fz-sm);
 }
 
 header .headerContent img {
@@ -25,9 +27,11 @@ header .headerContent img {
 main {
   display: grid;
   grid-template-columns: 3fr 2fr;
+  align-items: flex-start;
+  justify-content: center;
   gap: 2rem;
-  place-content: center;
   padding: 5rem 0;
+  min-height: 700px;
 }
 
 main section {
